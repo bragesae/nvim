@@ -1,1 +1,1 @@
-require("braggi")
+require("settings")
