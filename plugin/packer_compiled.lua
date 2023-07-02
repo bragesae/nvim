@@ -104,11 +104,6 @@ _G.packer_plugins = {
     path = "/home/brage/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  formatter = {
-    loaded = true,
-    path = "/home/brage/.local/share/nvim/site/pack/packer/start/formatter",
-    url = "https://github.com/mhartington/formatter"
-  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/brage/.local/share/nvim/site/pack/packer/start/friendly-snippets",
