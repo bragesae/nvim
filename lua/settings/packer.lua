@@ -24,7 +24,6 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/playground')
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
-  use 'mhartington/formatter'
   use {
 	  "williamboman/mason.nvim",
 	  run = ":MasonUpdate" -- :MasonUpdate updates registry contents
@@ -35,12 +34,12 @@ return require('packer').startup(function(use)
 	  requires = {
 		  -- LSP Support
 		  {'neovim/nvim-lspconfig'},             -- Required
---		  {                                      -- Optional
---		  'williamboman/mason.nvim',
---		  run = function()
---			  pcall(vim.cmd, 'MasonUpdate')
---		  end,
---	  },
+		  {                                      -- Optional
+		  'williamboman/mason.nvim',
+		  run = function()
+			  pcall(vim.cmd, 'MasonUpdate')
+		  end,
+	  },
 	  {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
 	  -- Autocompletion
