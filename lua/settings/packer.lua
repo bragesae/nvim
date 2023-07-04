@@ -25,6 +25,12 @@ return require('packer').startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use {
+      'nvim-tree/nvim-tree.lua',
+        requires = {
+                'nvim-tree/nvim-web-devicons', -- optional
+                  },
+  }
+  use {
 	  "williamboman/mason.nvim",
 	  run = ":MasonUpdate" -- :MasonUpdate updates registry contents
   }
