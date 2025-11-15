@@ -18,7 +18,10 @@ use{'nvim-neo-tree/neo-tree.nvim',
 use{'nvim-tree/nvim-tree.lua', requires = {'nvim-tree/nvim-web-devicons'}}
 use{'williamboman/mason.nvim', run = ':MasonUpdate'}
 use{'mg979/vim-visual-multi', branch = 'master'}  
-use {
+use{'mfussenegger/nvim-dap',
+     requires = { 'nvim-neotest/nvim-nio', 'rcarriga/nvim-dap-ui', 'theHamsta/nvim-dap-virtual-text' }
+}
+use{
   'VonHeikemen/lsp-zero.nvim',
    branch = 'v2.x',
    requires = {

@@ -31,3 +31,19 @@ require("neo-tree").setup({
 
 -- VS Code style toggle
 vim.keymap.set("n", "<leader>e", ":Neotree reveal<CR>")
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = "neo-tree*",
+  callback = function()
+    -- Move Neo-tree to far left
+    vim.cmd("wincmd H")
+
+    local win = vim.fn.win_getid()
+    if win == 0 then return end  -- no valid window
+
+    vim.api.nvim_win_set_width(win, 40)
+    -- Prevent auto-resizing
+    vim.api.nvim_win_set_option(win, "winfixwidth", true)
+
+
+  end,
+})

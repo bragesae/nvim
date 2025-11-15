@@ -22,3 +22,5 @@ vim.g.VM_maps = {
 }
 -- Optional: make visual-multi work better in Neo-tree/floating windows
 vim.g.VM_mouse_mappings = 1
+
+
