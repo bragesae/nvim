@@ -6,6 +6,13 @@ lsp.ensure_installed({
 	'clangd',
 })
 
+lsp.configure('clangd', {
+    cmd = { 
+        "/usr/bin/clangd-20", 
+        "--background-index",
+    }
+})
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -31,12 +38,36 @@ lsp.set_preferences({
 		info = 'I'
 	}
 })
+-- Diagnostics configuration
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = "●",
+        spacing = 2,
+        severity = { min = vim.diagnostic.severity.HINT },
+        max_width = 50,
+    },
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+
+    
+})
 
 lsp.on_attach(function(client, bufnr)
 	local opts = {buffer = bufnr, remap = false}
-
+    
+   if client.server_capabilities.documentFormattingProvider then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            callback = function()
+                -- Pass the buffer explicitly to avoid nil buf errors
+                vim.lsp.buf.format({ buffer = bufnr, async = false })
+            end,
+        })
+    end 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+	vim.keymap.set("n", "<C-k>", function() vim.lsp.buf.hover() end, opts)
 	vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
 	vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
 	vim.keymap.set("n", "(d", function() vim.diagnostic.goto_next() end, opts)

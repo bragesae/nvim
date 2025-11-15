@@ -6,6 +6,11 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+  use {
+    'github/copilot.vim',
+      run = ':CopilotUpdate'
+  }
+
 
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -13,16 +18,16 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use({
-	  'rose-pine/neovim', 
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
-  })
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
-  use('theprimeagen/harpoon')
+  use {
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v3.x",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "MunifTanjim/nui.nvim",
+  }}
   use('mbbill/undotree')
   use {
       'nvim-tree/nvim-tree.lua',
@@ -34,32 +39,34 @@ return require('packer').startup(function(use)
 	  "williamboman/mason.nvim",
 	  run = ":MasonUpdate" -- :MasonUpdate updates registry contents
   }
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v2.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},             -- Required
-		  {                                      -- Optional
-		  'williamboman/mason.nvim',
-		  run = function()
-			  pcall(vim.cmd, 'MasonUpdate')
-		  end,
-	  },
-	  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+  use {"catppuccin/nvim", as = "catppuccin"}
+use {
+  'mg979/vim-visual-multi',
+  branch = 'master',
+}  
+    use {
+      "VonHeikemen/lsp-zero.nvim",
+      branch = "v2.x",
+      requires = {
+        -- LSP Support
+        { "neovim/nvim-lspconfig" }, -- Required
+        { "williamboman/mason.nvim", run = function() pcall(vim.cmd, "MasonUpdate") end }, -- Optional
+        { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-	  -- Autocompletion
-	  {'hrsh7th/nvim-cmp'},     -- Required
-	  {'hrsh7th/cmp-buffer'}, -- Required
-	  {'hrsh7th/cmp-path'}, -- Required
-	  {'hrsh7th/cmp-nvim-lsp'}, -- Required
-	  {'hrsh7th/cmp-nvim-lua'}, -- Required
-	  {'saadparwaiz1/cmp_luasnip'}, -- Required
+        -- Autocompletion
+        { "hrsh7th/nvim-cmp" },       
+        { "hrsh7th/cmp-buffer" },     
+        { "hrsh7th/cmp-path" },       
+        { "hrsh7th/cmp-nvim-lsp" },   
+        { "hrsh7th/cmp-nvim-lua" },   
+        { "saadparwaiz1/cmp_luasnip" },
 
-	  {'L3MON4D3/LuaSnip'},     -- Required
-	  {'rafamadriz/friendly-snippets'},     -- Required
+        -- Snippets
+        { "L3MON4D3/LuaSnip" },       
+        { "rafamadriz/friendly-snippets" },
+      }
+    }
 
-  }
-  }
+
 end)
 
