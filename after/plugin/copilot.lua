@@ -1,10 +1,3 @@
--- Install Copilot using Packer
--- use {
---   'github/copilot.vim',
---     run = ':CopilotUpdate'
---    }
-
--- Configure Copilot
 vim.g.copilot_enabled = true
 vim.g.copilot_tab_fuzzy = false
 

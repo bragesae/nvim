@@ -5,6 +5,7 @@ require("neo-tree").setup({
         hide_gitignored = false,
     },
       window = {
+        position = "left",
         auto_preview = true,          -- auto preview when cursor moves
         width = 50,
         mappings = {

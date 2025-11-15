@@ -11,18 +11,14 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set('n', '<S-Tab>', '<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>')
-vim.keymap.set('n', '<C-v>', '<C-v>', { noremap = true })
-vim.keymap.set('n', '<C-v>', '<C-q>')
 -- Map Shift+I in visual mode to do insert on all lines
 vim.keymap.set('x', 'S-i', '<Esc>gI', { noremap = true, desc = "Insert on all selected lines" })
 
--- Remap VS Code style keys for multi-cursor
 vim.g.VM_maps = {
   ['Find Under']         = '<C-n>',
   ['Find Subword Under'] = '<C-n>',
   ["Select All"]         = "<C-l>",
   ["Visual All"]         = "<C-l>",
 }
-
 -- Optional: make visual-multi work better in Neo-tree/floating windows
 vim.g.VM_mouse_mappings = 1
