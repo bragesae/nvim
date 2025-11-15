@@ -11,30 +11,47 @@ M.setup = function()
     fg       = "#d4d4d4",
     comment  = "#6a9955",
     keyword  = "#ff5555",
-    namespace = "#dcdc6a",
     string   = "#ce9178",
-    type     = "#4ec9b0",
+    type     = "#ffb90f",
+    identifier = "#009ACD",
+    include  = "#66CD00",
     func     = "#dcdcaa",
     number   = "#b5cea8",
     constant = "#9cdcfe",
-    preprocessor   = "#569cd6",
+    preprocessor   = "#66CDAA",
+    todo    = "#",
+    error = "#ff5555",
+    warn = "#ffcc00",
+    info = "#00ffff",
+    hint = "#aaaaaa",
     -- ... add more as needed
   }
 
   -- Set highlights
   vim.api.nvim_set_hl(0, "Normal",       { fg = palette.fg, bg = palette.bg })
-  vim.api.nvim_set_hl(0, "Comment",      { fg = palette.comment, italic = true })
+  vim.api.nvim_set_hl(0, "Comment",      { fg = palette.comment })
   vim.api.nvim_set_hl(0, "Keyword",      { fg = palette.keyword })
-  vim.api.nvim_set_hl(0, "Namespace", { fg = palette.namespace })
+  vim.api.nvim_set_hl(0, "Identifier",   { fg = palette.identifier})
+  vim.api.nvim_set_hl(0, "Include",      { fg = palette.include})
   vim.api.nvim_set_hl(0, "String",       { fg = palette.string })
   vim.api.nvim_set_hl(0, "Type",         { fg = palette.type })
   vim.api.nvim_set_hl(0, "Function",     { fg = palette.func })
   vim.api.nvim_set_hl(0, "Number",       { fg = palette.number })
   vim.api.nvim_set_hl(0, "Constant",     { fg = palette.constant })
-  vim.api.nvim_set_hl(0, "PreProc", { fg = palette.preprocessor })
-  vim.cmd([[
-	  syntax match PreProc "^#\w\+"
-  ]])
+  vim.api.nvim_set_hl(0, "DiagnosticError", { fg = palette.error, bold = true })
+  vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = palette.warn })
+  vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = palette.info })
+  vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = palette.hint })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = palette.error })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = palette.warn })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = palette.hint })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = palette.info })
+
+
+  -- vim.api.nvim_set_hl(0, "PreProc", { fg = palette.preprocessor })
+  -- vim.cmd([[
+  --     syntax match PreProc "^#\w\+"
+  -- ]])
   -- Add more groups: Identifier, Operator, Title, Statement, etc.
 
   -- Link Tree‑sitter and LSP groups (example)
@@ -44,7 +61,7 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "@string",           { link = "String" })
   vim.api.nvim_set_hl(0, "@type",             { link = "Type" })
   vim.api.nvim_set_hl(0, "@preproc",          { link = "PreProc" })
-  vim.api.nvim_set_hl(0, "LspDiagnosticsDefaultError",   { fg = "#f44747" })
+  vim.api.nvim_set_hl(0, "LspDiagnosticsDefaultError",   { fg = "#CD2626" })
   vim.api.nvim_set_hl(0, "LspDiagnosticsDefaultWarning", { fg = "#ff8800" })
   vim.api.nvim_set_hl(0, "LspDiagnosticsDefaultInformation", { fg = "#4fc1ff" })
   vim.api.nvim_set_hl(0, "LspDiagnosticsDefaultHint",     { fg = "#10b981" })
