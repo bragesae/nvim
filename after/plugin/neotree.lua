@@ -1,5 +1,9 @@
 require("neo-tree").setup({
     filesystem = {
+        filtered_items = {
+        hide_dotfiles = false,  -- Show hidden files
+        hide_gitignored = false,
+    },
       window = {
         auto_preview = true,          -- auto preview when cursor moves
         width = 50,

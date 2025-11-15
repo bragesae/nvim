@@ -16,3 +16,13 @@ vim.keymap.set('n', '<C-v>', '<C-q>')
 -- Map Shift+I in visual mode to do insert on all lines
 vim.keymap.set('x', 'S-i', '<Esc>gI', { noremap = true, desc = "Insert on all selected lines" })
 
+-- Remap VS Code style keys for multi-cursor
+vim.g.VM_maps = {
+  ['Find Under']         = '<C-n>',
+  ['Find Subword Under'] = '<C-n>',
+  ["Select All"]         = "<C-l>",
+  ["Visual All"]         = "<C-l>",
+}
+
+-- Optional: make visual-multi work better in Neo-tree/floating windows
+vim.g.VM_mouse_mappings = 1
