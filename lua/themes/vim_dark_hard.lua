@@ -1,74 +1,119 @@
--- ~/.config/nvim/lua/themes/vim_dark_hard.lua
 local M = {}
 
-M.setup = function()
-  vim.o.termguicolors = true
-  vim.o.background = "dark"
+M.setup = function()   
 
-  -- Example palette (you'll replace with actual hexes)
-  local palette = {
-    bg            = "#1e1e1e",
-    fg            = "#d4d4d4",
-    comment       = "#6a9955",
-    keyword       = "#ff5555",
-    string        = "#ce9178",
-    type          = "#CDAD00",
-    identifier    = "#009ACD",
-    include       = "#66CD00",
-    func          = "#CDAD00",
-    number        = "#b5cea8",
-    constant      = "#9cdcfe",
-    preprocessor  = "#66CDAA",
-    todo          = "#FFFF00",
-    error         = "#ff5555",
-    warn          = "#ffcc00",
-    info          = "#00ffff",
-    hint          = "#aaaaaa",
-    -- ... add more as needed
-  }
+  
+    local colors = {
+      bg          = "#0b0b0b",
+      fg          = "#ffffff",
 
-  -- Set highlights
-  vim.api.nvim_set_hl(0, "Normal",       { fg = palette.fg, bg = palette.bg })
-  vim.api.nvim_set_hl(0, "Comment",      { fg = palette.comment })
-  vim.api.nvim_set_hl(0, "Keyword",      { fg = palette.keyword })
-  vim.api.nvim_set_hl(0, "Identifier",   { fg = palette.identifier})
-  vim.api.nvim_set_hl(0, "Include",      { fg = palette.include})
-  vim.api.nvim_set_hl(0, "String",       { fg = palette.string })
-  vim.api.nvim_set_hl(0, "Type",         { fg = palette.type })
-  vim.api.nvim_set_hl(0, "Function",     { fg = palette.func })
-  vim.api.nvim_set_hl(0, "Number",       { fg = palette.number })
-  vim.api.nvim_set_hl(0, "Constant",     { fg = palette.constant })
-  vim.api.nvim_set_hl(0, "Todo",         { fg = palette.todo})
-  vim.api.nvim_set_hl(0, "PreProc",      { fg = palette.preprocessor})
-  vim.api.nvim_set_hl(0, "DiagnosticError", { fg = palette.error, bold = true })
-  vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = palette.warn })
-  vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = palette.info })
-  vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = palette.hint })
-  vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = palette.error })
-  vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = palette.warn })
-  vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = palette.hint })
-  vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = palette.info })
+      cursor      = "#e1e4e8",
+      line        = "#2b2b2b",
 
+      comment     = "#5c5c5c",
+      keyword     = "#FF0000",
+      operator    = "#dcdcaa",
+      string      = "#23B26B",
+      number      = "#b5cea8",
+      constant    = "#1e88e5", -- "#4ec9b0",
+      constant_builtin = "#D684D6",
+      constant_macro = "#4ec9b0",
+      variable    = "#FDFDEA",
+      variable_mem = "#B2E5FF",
+      func        = "#FAD900",
+      type        = "#F0E17F",
+      preproc     = "#FAD900",
+      include     = "#56C596",
+      error       = "#ff5555",
+      warn        = "#ffcc00",
+      info        = "#00ffff",
+      hint        = "#aaaaaa",
+    }
 
-  -- vim.api.nvim_set_hl(0, "PreProc", { fg = palette.preprocessor })
-  -- vim.cmd([[
-  --     syntax match PreProc "^#\w\+"
-  -- ]])
-  -- Add more groups: Identifier, Operator, Title, Statement, etc.
+    -- Helper
+    local function hl(group, opts)
+      vim.api.nvim_set_hl(0, group, opts)
+    end
 
-  -- Link Tree‑sitter and LSP groups (example)
-  -- vim.api.nvim_set_hl(0, "@comment",          { link = "Comment" })
-  -- vim.api.nvim_set_hl(0, "@keyword",          { link = "Keyword" })
-  -- vim.api.nvim_set_hl(0, "@namespace_name",   { link = "Namespace" })
-  -- vim.api.nvim_set_hl(0, "@string",           { link = "String" })
-  -- vim.api.nvim_set_hl(0, "@type",             { link = "Type" })
-  -- vim.api.nvim_set_hl(0, "@preproc",          { link = "PreProc" })
-  -- vim.api.nvim_set_hl(0, "LspDiagnosticsDefaultError",   { fg = "#CD2626" })
-  -- vim.api.nvim_set_hl(0, "LspDiagnosticsDefaultWarning", { fg = "#ff8800" })
-  -- vim.api.nvim_set_hl(0, "LspDiagnosticsDefaultInformation", { fg = "#4fc1ff" })
-  -- vim.api.nvim_set_hl(0, "LspDiagnosticsDefaultHint",     { fg = "#10b981" })
+    -- Diagnostics
+    hl("Error",         { fg = colors.error, bold = true })
+    hl("ErrorMsg",      { fg = colors.error, bold = true })
+    hl("WarningMsg",    { fg = colors.warn })
+    hl("MoreMsg",       { fg = colors.info })
+    hl("Question",      { fg = colors.hint })
+    hl("DiagnosticError", { fg = colors.error, bold = true })
+    hl("DiagnosticWarn", { fg = colors.warn })
+    hl("DiagnosticInfo", { fg = colors.info })
+    hl("DiagnosticHint", { fg = colors.hint })
+    hl("DiagnosticUnderlineError", { undercurl = true, sp = colors.error })
+    hl("DiagnosticUnderlineWarn", { undercurl = true, sp = colors.warn })
+    hl("DiagnosticUnderlineHint", { undercurl = true, sp = colors.hint })
+    hl("DiagnosticUnderlineInfo", { undercurl = true, sp = colors.info })
+    -- Comments
+    hl("@comment", { fg = colors.comment })
+
+    hl("@variable",                  { fg = colors.variable })
+    hl("@variable.member",           { fg = colors.variable_mem })
+    -- Keywords
+    hl("@keyword",                   { fg = colors.keyword })
+    hl("@keyword.function",          { fg = colors.keyword })
+    hl("@keyword.return",            { fg = colors.keyword })
+    hl("@keyword.operator",          { fg = colors.operator })
+    hl("@keyword.import",            { fg = colors.include })
+    hl("@keyword.directive",            { fg = colors.include })
+    hl("@conditional",               { fg = colors.keyword })
+    hl("@repeat",                    { fg = colors.keyword })
+    hl("@label",                     { fg = colors.keyword })
+    hl("@module",                    { fg = colors.preproc })
+    hl("@boolean",                   { fg = colors.constant_builtin })
+
+    -- Operators
+    hl("@operator",                  { fg = colors.operator })
+    hl("@operator.assignment",       { fg = colors.operator })
+    hl("@operator.logical",          { fg = colors.operator })
+    hl("@operator.comparison",       { fg = colors.operator })
+    hl("@operator.arithmetic",       { fg = colors.operator })
+
+    -- Strings & chars
+    hl("@string",                    { fg = colors.string })
+    hl("@string.escape",             { fg = colors.constant_builtin }) -- escapes: \n, \t, etc.
+    hl("@string.special",            { fg = colors.string })
+
+    -- Numbers
+    hl("@number",                    { fg = colors.number })
+    hl("@float",                     { fg = colors.number })
+
+    -- Functions
+    hl("@function",                  { fg = colors.func })
+    hl("@function.call",             { fg = colors.func })
+    hl("@function.builtin",          { fg = colors.func })
+    hl("@method",                    { fg = colors.func })
+
+    -- Variables
+    hl("@variable",                  { fg = colors.variable })
+    hl("@variable.builtin",          { fg = "#c586c0" }) -- like `this`, `self`
+
+    -- Constants
+    hl("@constant",                  { fg = colors.constant })
+    hl("@constant.builtin",          { fg = colors.constant_builtin })
+    hl("@constant.macro",            { fg = colors.preproc })
+
+    -- Types
+    hl("@type",                      { fg = colors.type })
+    hl("@type.builtin",              { fg = colors.variable })
+    hl("@type.definition",           { fg = colors.type })
+    hl("@field",                     { fg = colors.variable })
+    hl("@property",                  { fg = colors.variable_mem })
+
+    -- Punctuation
+    hl("@punctuation.delimiter",     { fg = colors.operator })
+    hl("@punctuation.bracket",       { fg = colors.operator })
+    hl("@punctuation.special",       { fg = colors.operator })
+
+    -- Control flow
+    hl("@exception",                 { fg = colors.keyword })
+
 end
 
+    
 return M
-
-
