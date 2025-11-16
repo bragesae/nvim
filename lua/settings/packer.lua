@@ -1,13 +1,19 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-use 'wbthomason/packer.nvim'
-use {'github/copilot.vim', run = ':CopilotUpdate'}
+use{'wbthomason/packer.nvim'}
+use{'williamboman/mason.nvim', run = ':MasonUpdate'}
+
+use{'github/copilot.vim', run = ':CopilotUpdate'}
+
+use{'mg979/vim-visual-multi', branch = 'master'}  
+
 use{'nvim-telescope/telescope.nvim', tag = '0.1.2',
      requires = { {'nvim-lua/plenary.nvim'} }
 }
 use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 use('nvim-treesitter/playground')
+
 use{'nvim-neo-tree/neo-tree.nvim',
       branch = 'v3.x',
       requires = {
@@ -15,12 +21,14 @@ use{'nvim-neo-tree/neo-tree.nvim',
         'nvim-tree/nvim-web-devicons',
         'MunifTanjim/nui.nvim',
 }}
+
 use{'nvim-tree/nvim-tree.lua', requires = {'nvim-tree/nvim-web-devicons'}}
-use{'williamboman/mason.nvim', run = ':MasonUpdate'}
-use{'mg979/vim-visual-multi', branch = 'master'}  
+
 use{'mfussenegger/nvim-dap',
-     requires = { 'nvim-neotest/nvim-nio', 'rcarriga/nvim-dap-ui', 'theHamsta/nvim-dap-virtual-text' }
+     requires = { 'nvim-neotest/nvim-nio', 'rcarriga/nvim-dap-ui' }
 }
+use{"nvim-neotest/neotest", requires = {"alfaix/neotest-gtest"}}
+
 use{
   'VonHeikemen/lsp-zero.nvim',
    branch = 'v2.x',
@@ -43,6 +51,7 @@ use{
    { 'rafamadriz/friendly-snippets' },
  }
 }
+
 
 
 end)
