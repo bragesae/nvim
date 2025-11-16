@@ -15,7 +15,7 @@ M.setup = function()
       operator    = "#dcdcaa",
       string      = "#23B26B",
       number      = "#b5cea8",
-      constant    = "#4ec9b0",
+      constant    = "#1e88e5", -- "#4ec9b0",
       constant_builtin = "#D684D6",
       constant_macro = "#4ec9b0",
       variable    = "#FDFDEA",
@@ -23,7 +23,7 @@ M.setup = function()
       func        = "#FAD900",
       type        = "#F0E17F",
       preproc     = "#FAD900",
-      include     = "#66CCFF",
+      include     = "#56C596",
       error       = "#ff5555",
       warn        = "#ffcc00",
       info        = "#00ffff",
@@ -34,40 +34,6 @@ M.setup = function()
     local function hl(group, opts)
       vim.api.nvim_set_hl(0, group, opts)
     end
-
-    -- UI
-    -- hl("Normal",       { fg = colors.fg, bg = colors.bg })
-    -- hl("Cursor",       { fg = colors.bg, bg = colors.cursor })
-    -- hl("CursorLine",   { bg = colors.line })
-    -- hl("CursorColumn", { bg = colors.line })
-    -- hl("LineNr",       { fg = "#555555" })
-    -- hl("CursorLineNr", { fg = "#aaaaaa" })
-    -- hl("Visual",       { bg = "#404040" })
-
-    -- hl("Pmenu",        { bg = "#1e1e1e", fg = colors.fg })
-    -- hl("PmenuSel",     { bg = "#333333", fg = colors.fg })
-    -- hl("PmenuSbar",    { bg = "#262626" })
-    -- hl("PmenuThumb",   { bg = "#444444" })
-
-    -- hl("StatusLine",   { bg = "#1e1e1e", fg = colors.fg })
-    -- hl("StatusLineNC", { bg = "#151515", fg = "#888888" })
-
-    -- hl("VertSplit",    { fg = "#1e1e1e" })
-    -- hl("SignColumn",   { bg = colors.bg })
-
-    -- -- Core syntax
-    -- hl("Comment",       { fg = colors.comment, italic = true })
-    -- hl("Keyword",       { fg = colors.keyword })
-    -- hl("Operator",      { fg = colors.operator })
-    -- hl("Identifier",    { fg = colors.variable })
-    -- hl("Function",      { fg = colors.func })
-    -- hl("Constant",      { fg = colors.constant })
-    -- hl("String",        { fg = colors.string })
-    -- hl("Number",        { fg = colors.number })
-    -- hl("Type",          { fg = colors.type })
-    -- hl("Boolean",       { fg = colors.number })
-    -- hl("Character",     { fg = colors.string })
-    -- hl("PreProc",       { fg = colors.preproc })
 
     -- Diagnostics
     hl("Error",         { fg = colors.error, bold = true })
@@ -83,29 +49,6 @@ M.setup = function()
     hl("DiagnosticUnderlineWarn", { undercurl = true, sp = colors.warn })
     hl("DiagnosticUnderlineHint", { undercurl = true, sp = colors.hint })
     hl("DiagnosticUnderlineInfo", { undercurl = true, sp = colors.info })
-    -- Search / Highlights
-    -- hl("Search",        { bg = "#613214", fg = colors.fg })
-    -- hl("IncSearch",     { bg = "#754110", fg = colors.fg })
-    -- hl("MatchParen",    { bg = "#333333", bold = true })
-
-    -- -- Diff
-    -- hl("DiffAdd",       { bg = "#003300" })
-    -- hl("DiffChange",    { bg = "#333300" })
-    -- hl("DiffDelete",    { bg = "#330000" })
-    -- hl("DiffText",      { bg = "#005500" })
-
-    -- -- Folds
-    -- hl("Folded",        { fg = "#888888", bg = "#1a1a1a" })
-    -- hl("FoldColumn",    { fg = "#888888", bg = colors.bg })
-
-    -- -- Misc
-    -- hl("NonText",       { fg = "#3c3c3c" })
-    -- hl("SpecialKey",    { fg = "#444444" })
-    -- hl("Title",         { fg = colors.keyword, bold = true })
-    -- hl("Directory",     { fg = colors.keyword })
-    -- hl("Delimiter",     { fg = colors.operator })
-    -- hl("Statement",     { fg = colors.keyword })
-
     -- Comments
     hl("@comment", { fg = colors.comment })
 
@@ -117,6 +60,7 @@ M.setup = function()
     hl("@keyword.return",            { fg = colors.keyword })
     hl("@keyword.operator",          { fg = colors.operator })
     hl("@keyword.import",            { fg = colors.include })
+    hl("@keyword.directive",            { fg = colors.include })
     hl("@conditional",               { fg = colors.keyword })
     hl("@repeat",                    { fg = colors.keyword })
     hl("@label",                     { fg = colors.keyword })
@@ -132,7 +76,7 @@ M.setup = function()
 
     -- Strings & chars
     hl("@string",                    { fg = colors.string })
-    hl("@string.escape",             { fg = "#d16969" }) -- escapes: \n, \t, etc.
+    hl("@string.escape",             { fg = colors.constant_builtin }) -- escapes: \n, \t, etc.
     hl("@string.special",            { fg = colors.string })
 
     -- Numbers
@@ -152,14 +96,14 @@ M.setup = function()
     -- Constants
     hl("@constant",                  { fg = colors.constant })
     hl("@constant.builtin",          { fg = colors.constant_builtin })
-    hl("@constant.macro",            { fg = colors.constant_macro })
+    hl("@constant.macro",            { fg = colors.preproc })
 
     -- Types
     hl("@type",                      { fg = colors.type })
     hl("@type.builtin",              { fg = colors.variable })
     hl("@type.definition",           { fg = colors.type })
     hl("@field",                     { fg = colors.variable })
-    hl("@property",                  { fg = colors.variable })
+    hl("@property",                  { fg = colors.variable_mem })
 
     -- Punctuation
     hl("@punctuation.delimiter",     { fg = colors.operator })
