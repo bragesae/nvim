@@ -1,8 +1,14 @@
+require("mason-lspconfig").setup({
+    automatic_installation = true,
+    ensure_installed = { "clangd" },
+})
+
 local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
 
 lsp.ensure_installed({
+    automatic_installation = true,
 	'clangd',
 })
 

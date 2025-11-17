@@ -1,10 +1,15 @@
+require("mason").setup({
+    ensure_installed = { "codelldb" },  -- Debugger
+    automatic_installation = true,
+})
+
 local dap = require("dap")
 
 dap.adapters.codelldb = {
   type = 'server',
   port = '${port}',
   executable = {
-    command = '/home/brage/codelldb/extension/adapter/codelldb',
+    command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
     args = {'--port', '${port}'},
   }
 }
@@ -92,11 +97,13 @@ vim.api.nvim_create_autocmd('FileType', {
 -- Open and close automatically
 dap.listeners.after.event_initialized['dapui_config'] = function()
   vim.cmd('Neotree close')
+  vim.cmd('Neotest summary close')
   dapui.open()
 end
 dap.listeners.before.event_terminated['dapui_config'] = function()
   dapui.close()
   vim.cmd('Neotree reveal')
+  vim.cmd('Neotest summary open')
 end
 dap.listeners.before.event_exited['dapui_config'] = function()
   dapui.close()

@@ -174,11 +174,6 @@ _G.packer_plugins = {
     path = "/home/brage/.local/share/nvim/site/pack/packer/start/nvim-nio",
     url = "https://github.com/nvim-neotest/nvim-nio"
   },
-  ["nvim-tree.lua"] = {
-    loaded = true,
-    path = "/home/brage/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/nvim-tree/nvim-tree.lua"
-  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/brage/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
