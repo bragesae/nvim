@@ -19,15 +19,14 @@ dap.configurations.cpp = {
     name = 'Launch with CodeLLDB',
     type = 'codelldb',
     request = 'launch',
-    program = '${workspaceFolder}/build/test/networking_tests',
     cwd = '${workspaceFolder}',
     stopOnEntry = false,
     args = {},
     sourceMap = { 
       ['${workspaceFolder}'] = vim.fn.getcwd()  -- map to your current folder
     },
-    runInTerminal = true,  -- IMPORTANT
-    console = "integratedTerminal", -- still needed
+    runInTerminal = true,
+    console = "integratedTerminal",
   },
 }
 
@@ -72,6 +71,11 @@ dapui.setup({
       repl = "r",
       toggle = "t"
     },
+    element_mappings = {
+        stacks = {
+          open = "<CR>",
+        }
+    },
   },
   floating = {
     max_height = 0.9,
@@ -109,6 +113,7 @@ dap.listeners.before.event_exited['dapui_config'] = function()
   dapui.close()
   vim.cmd('Neotree reveal')
 end
+
 -- require('nvim-dap-virtual-text').setup({
 --     enabled = true,             -- default: true
 --     commented = false,          -- show as virtual text without comment symbols
@@ -130,6 +135,7 @@ vim.api.nvim_set_keymap('n', '<F8>', ':lua require"dap".step_out()<CR>', { norem
 vim.api.nvim_set_keymap('n', '<F10>', ':lua require"dap".terminate()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>b', ':lua require"dap".toggle_breakpoint()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>h', ':lua require"dap.ui.widgets".hover()<CR>', { noremap = true, silent = true })
+
 
 local float_exit_keys = { "q", "<ESC>" }
 vim.api.nvim_create_autocmd('FileType', {

@@ -16,10 +16,10 @@ M.setup = function()
       string      = "#23B26B",
       number      = "#b5cea8",
       constant    = "#1e88e5", -- "#4ec9b0",
-      constant_builtin = "#D684D6",
+      constant_builtin = "#FF0000",
       constant_macro = "#4ec9b0",
       variable    = "#FDFDEA",
-      variable_mem = "#B2E5FF",
+      variable_mem = "#FDFBD4",
       func        = "#FAD900",
       type        = "#F0E17F",
       preproc     = "#FAD900",
@@ -60,12 +60,13 @@ M.setup = function()
     hl("@keyword.return",            { fg = colors.keyword })
     hl("@keyword.operator",          { fg = colors.operator })
     hl("@keyword.import",            { fg = colors.include })
-    hl("@keyword.directive",            { fg = colors.include })
+    hl("@keyword.directive",         { fg = colors.include })
+    hl("@keyword.modifier",          { fg = "#FFA500" })
     hl("@conditional",               { fg = colors.keyword })
     hl("@repeat",                    { fg = colors.keyword })
     hl("@label",                     { fg = colors.keyword })
     hl("@module",                    { fg = colors.preproc })
-    hl("@boolean",                   { fg = colors.constant_builtin })
+    hl("@boolean",                   { fg = "#C9A0DC" })
 
     -- Operators
     hl("@operator",                  { fg = colors.operator })
@@ -100,7 +101,7 @@ M.setup = function()
 
     -- Types
     hl("@type",                      { fg = colors.type })
-    hl("@type.builtin",              { fg = colors.variable })
+    hl("@type.builtin",              { fg = "#FF0000"})
     hl("@type.definition",           { fg = colors.type })
     hl("@field",                     { fg = colors.variable })
     hl("@property",                  { fg = colors.variable_mem })

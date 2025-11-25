@@ -1,3 +1,4 @@
+local window_width = 75
 require("neo-tree").setup({
     filesystem = {
         filtered_items = {
@@ -7,11 +8,13 @@ require("neo-tree").setup({
       window = {
         position = "left",
         auto_preview = true,          -- auto preview when cursor moves
-        width = 50,
+        width = window_width,
+        auto_resize = false, 
+        number = true,
         mappings = {
           -- ["l"] = "open",
           -- ["h"] = "close_node",
-          ["p"] = { "toggle_preview", config = { use_float = true } },
+          ["P"] = { "toggle_preview", config = { use_float = true } },
         },
         preview = {
             type = "floating",          -- floating window preview (hover style)
@@ -39,7 +42,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     local win = vim.fn.win_getid()
     if win == 0 then return end  -- no valid window
 
-    vim.api.nvim_win_set_width(win, 40)
+    vim.api.nvim_win_set_width(win, window_width)
     -- Prevent auto-resizing
     vim.api.nvim_win_set_option(win, "winfixwidth", true)
 
@@ -47,12 +50,19 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "neo-tree",
+  callback = function()
+    vim.opt_local.relativenumber = true
+    vim.opt_local.number = true
+  end,
+})
 
 -- vim.api.nvim_set_hl(0, "NeoTreeBufferNumber  ", { fg = "#" })     -- The buffer number shown in the buffers source.
 -- vim.api.nvim_set_hl(0, "NeoTreeCursorLine    ", { fg = "#" })     -- |hl-CursorLine| override in Neo-tree window.
 -- vim.api.nvim_set_hl(0, "NeoTreeDimText       ", { fg = "#" })     -- Greyed out text used in various places.
-vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = "#0d47a1" })     -- Directory icon.
-vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = "#0d47a1" })     -- Directory name.
+vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = "#539ED6" })     -- Directory icon.
+vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = "#539ED6" })     -- Directory name.
 -- vim.api.nvim_set_hl(0, "NeoTreeDotfile       ", { fg = "#" })     -- Used for icons and names when dotfiles are filtered.
 -- vim.api.nvim_set_hl(0, "NeoTreeFileIcon      ", { fg = "#" })     -- File icon, when not overridden by devicons.
 -- vim.api.nvim_set_hl(0, "NeoTreeFileName      ", { fg = "#" })     -- File name, when not overwritten by another status.
