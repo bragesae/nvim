@@ -35,7 +35,7 @@ local function get_subdirs_excluding(excluded)
 
   return dirs
 end
-search_dirs = get_subdirs_excluding({"build", "install", "log", "~", ".git", "vdr"})
+search_dirs = get_subdirs_excluding({"build", "install", "log", "~", ".git", "vdr", ".cache"})
 
 vim.keymap.set('n', '<leader>ff', function()
     local cwd = vim.fn.getcwd()

@@ -6,12 +6,14 @@ use{'williamboman/mason.nvim', run = ':MasonUpdate'}
 require("mason").setup()
 
 use{'github/copilot.vim', run = ':CopilotUpdate'}
+use{"github/copilot-chat.nvim", requires = {"github/copilot.vim", "nvim-lua/plenary.nvim"} }
 
 use{'mg979/vim-visual-multi', branch = 'master'}  
 
 use{'nvim-telescope/telescope.nvim', tag = '0.1.2',
      requires = { {'nvim-lua/plenary.nvim'} }
 }
+use{"nvim-pack/nvim-spectre", dependencies = { "nvim-lua/plenary.nvim" }}
 use{'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}}
 use{'nvim-treesitter/playground'}
 
@@ -22,7 +24,6 @@ use{'nvim-neo-tree/neo-tree.nvim',
         'nvim-tree/nvim-web-devicons',
         'MunifTanjim/nui.nvim',
 }}
-
 use{'mfussenegger/nvim-dap',
      requires = { 'nvim-neotest/nvim-nio', 'rcarriga/nvim-dap-ui' }
 }
