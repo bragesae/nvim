@@ -42,7 +42,12 @@ vim.keymap.set('n', '<leader>ff', function()
     builtin.find_files({search_dirs = search_dirs})
 end)
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>fw', function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ")})
-end)
 vim.keymap.set('n', '<S-Tab>', '<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>')
+
+local cwd = vim.fn.getcwd()
+vim.keymap.set('n', '<leader>fw', function()
+	builtin.grep_string({ 
+        search = vim.fn.input("Grep > "),
+        search_dirs = search_dirs 
+    })
+end)
