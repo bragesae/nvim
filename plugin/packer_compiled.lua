@@ -104,11 +104,6 @@ _G.packer_plugins = {
     path = "/home/brage/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["copilot-chat.nvim"] = {
-    loaded = true,
-    path = "/home/brage/.local/share/nvim/site/pack/packer/start/copilot-chat.nvim",
-    url = "https://github.com/github/copilot-chat.nvim"
-  },
   ["copilot.vim"] = {
     loaded = true,
     path = "/home/brage/.local/share/nvim/site/pack/packer/start/copilot.vim",

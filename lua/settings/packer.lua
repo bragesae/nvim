@@ -6,7 +6,6 @@ use{'williamboman/mason.nvim', run = ':MasonUpdate'}
 require("mason").setup()
 
 use{'github/copilot.vim', run = ':CopilotUpdate'}
-use{"github/copilot-chat.nvim", requires = {"github/copilot.vim", "nvim-lua/plenary.nvim"} }
 
 use{'mg979/vim-visual-multi', branch = 'master'}  
 
