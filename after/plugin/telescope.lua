@@ -1,9 +1,20 @@
+local actions = require("telescope.actions")
+
 require('telescope').setup({
     defaults = {
         sorting_strategy = "ascending",
         -- Default configuration for telescope goes here:
         -- config_key = value,
         -- ..
+    },
+    pickers = {
+      buffers = {
+        mappings = {
+          n = {
+            ["<leader>bd"] = actions.delete_buffer,   -- normal mode
+          },
+        },
+      },
     },
 })
 

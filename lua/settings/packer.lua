@@ -26,6 +26,7 @@ use{'nvim-neo-tree/neo-tree.nvim',
 use{'mfussenegger/nvim-dap',
      requires = { 'nvim-neotest/nvim-nio', 'rcarriga/nvim-dap-ui' }
 }
+use {"theHamsta/nvim-dap-virtual-text"}
 -- , 'williamboman/codelldb.nvim'
 use{"nvim-neotest/neotest", requires = {"alfaix/neotest-gtest"}}
 

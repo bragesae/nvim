@@ -114,12 +114,27 @@ dap.listeners.before.event_exited['dapui_config'] = function()
   vim.cmd('Neotree reveal')
 end
 
--- require('nvim-dap-virtual-text').setup({
---     enabled = true,             -- default: true
---     commented = false,          -- show as virtual text without comment symbols
---     highlight_changed_variables = false,
---     show_stop_reason = true,
--- })
+require('nvim-dap-virtual-text').setup({
+    enabled = true,                 
+    enabled_commands = false,            
+
+    highlight_changed_variables = true,  
+    highlight_new_as_changed = true,  
+    show_stop_reason = false,
+    commented = false,                   
+
+    only_first_definition = true,      
+    all_references = false,        
+
+    virt_text_pos = "eol", 
+
+    display_callback = function(variable, buf, stackframe, node)
+      -- return a text or nil
+      return variable.name .. " = " .. tostring(variable.value)
+    end,
+
+    clear_on_continue = false,           -- clear after continue
+})
 
 
 
