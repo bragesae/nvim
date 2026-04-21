@@ -13,7 +13,10 @@ use{'nvim-telescope/telescope.nvim', tag = '0.1.2',
      requires = { {'nvim-lua/plenary.nvim'} }
 }
 use{"nvim-pack/nvim-spectre", dependencies = { "nvim-lua/plenary.nvim" }}
-use{'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}}
+use{'nvim-treesitter/nvim-treesitter',
+     branch = 'master',
+     run = ':TSUpdate'
+}
 use{'nvim-treesitter/playground'}
 
 use{'nvim-neo-tree/neo-tree.nvim',
@@ -29,6 +32,7 @@ use{'mfussenegger/nvim-dap',
 use {"theHamsta/nvim-dap-virtual-text"}
 -- , 'williamboman/codelldb.nvim'
 use{"nvim-neotest/neotest", requires = {"alfaix/neotest-gtest"}}
+use{"Sang-it/fluoride"}
 
 use{
   'VonHeikemen/lsp-zero.nvim',

@@ -6,13 +6,13 @@ local is_test_file_impl = function(file)
     -- the extension must be cpp/cppm/cc/cxx/c++
     local lower = string.lower(file)
         -- check that it contains "test" or "tests"
-    if not string.find(file, "/src/") then
-        return false
-    end
-
-    if string.find(file, "/build/") then
-        return false
-    end
+--     if not string.find(file, "/src/") then
+--         return false
+--     end
+-- 
+--     if string.find(file, "/build/") then
+--         return false
+--     end
 
     if not lower:match("tests?") then
       return false

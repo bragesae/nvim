@@ -19,7 +19,10 @@ lsp.configure('clangd', {
         "--compile-commands-dir=/ros_ws/build",
         "--config=/ros_ws/.clangd",
         "--fallback-style=file:/usr/local/lib/python3.10/dist-packages/zb_lint/config/.clang-format",
-    }
+    },
+    root_dir = function()
+        return "/ros_ws"
+    end,
 })
 
 local cmp = require('cmp')

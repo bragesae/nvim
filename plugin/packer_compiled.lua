@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/brage/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
+  fluoride = {
+    loaded = true,
+    path = "/home/brage/.local/share/nvim/site/pack/packer/start/fluoride",
+    url = "https://github.com/Sang-it/fluoride"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/brage/.local/share/nvim/site/pack/packer/start/friendly-snippets",
