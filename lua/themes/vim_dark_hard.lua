@@ -52,6 +52,7 @@ M.setup = function()
     -- Comments
     hl("@comment", { fg = colors.comment })
 
+    hl("@preproc_include",           { fg = colors.preproc})
     hl("@variable",                  { fg = colors.variable })
     hl("@variable.member",           { fg = colors.variable_mem })
     -- Keywords

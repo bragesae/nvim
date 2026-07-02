@@ -25,7 +25,7 @@ vim.pack.add({
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
 
   -- Treesitter
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
   { src = "https://github.com/nvim-treesitter/playground" },
 
   -- File explorer
